@@ -1,6 +1,6 @@
 {
   "name": "ngx-modalview",
-  "version": "1.0.1",
+  "version": "16.0.1",
   "description": "Simple way to implement modal in Angular (16+) projects.",
   "scripts": {
     "build": "ng-packagr --config src/tsconfig.build.json",
