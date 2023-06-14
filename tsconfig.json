@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "declarationDir": "dist",
+    "declaration": true,
+    "lib": [
+      "dom",
+      "es6"
+    ]
+  },
+  "compileOnSave": true,
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "index.d.ts",
+    "node_modules",
+    "dist"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "dist/",
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true
+  }
+}

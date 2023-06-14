@@ -1,0 +1,20 @@
+# build files #
+compiled/
+dist/
+.history/
+
+# Node Files #
+node_modules
+npm-debug.log
+
+# IDE #
+.idea/
+.vscode/
+
+package-lock.json
+
+.npmrc
+/.vs
+.DS_Store
+
+/docs
