@@ -1,12 +1,4 @@
-import {
-  Component,
-  ComponentFactoryResolver,
-  ElementRef,
-  OnDestroy,
-  Type,
-  ViewChild,
-  ViewContainerRef, ComponentRef, Injector,
-} from '@angular/core';
+import { Component, ComponentFactoryResolver, ElementRef, OnDestroy, Type, ViewChild, ViewContainerRef, ComponentRef, Injector } from '@angular/core';
 import { NgxModalComponent } from './ngx-modal.component';
 
 /**
@@ -52,28 +44,38 @@ export class NgxModalWrapperComponent implements OnDestroy {
    * Constructor
    * @param {ComponentFactoryResolver} resolver
    */
-  constructor(private resolver: ComponentFactoryResolver) {}
+  constructor(
+    private resolver: ComponentFactoryResolver
+  ) { }
+
+  ngOnDestroy() {
+    if (this.clickOutsideCallback) {
+      const containerEl = this.wrapper.nativeElement;
+      containerEl.removeEventListener('click', this.clickOutsideCallback, false);
+      this.clickOutsideCallback = null;
+    }
+  }
 
   /**
    * Adds content modal component to wrapper
    * @param {Type<NgxModalComponent>} component
    * @return {NgxModalComponent}
    */
-  addComponent<T, T1>(component: Type<NgxModalComponent<T, T1>>): {ref: ComponentRef<NgxModalComponent<T, T1>>, component: NgxModalComponent<T, T1>} {
+  public addComponent<T, T1>(component: Type<NgxModalComponent<T, T1>>): { ref: ComponentRef<NgxModalComponent<T, T1>>, component: NgxModalComponent<T, T1> } {
     const factory = this.resolver.resolveComponentFactory(component);
     const injector = Injector.create([], this.viewContainer.injector);
     const componentRef = factory.create(injector);
     this.viewContainer.insert(componentRef.hostView);
     this.content = <NgxModalComponent<T, T1>>componentRef.instance;
     this.content.wrapper = this.wrapper;
-    return {ref: componentRef, component: this.content};
+    return { ref: componentRef, component: this.content };
   }
 
   /**
    * Configures the function to call when you click on background of a modal but not the contents
    * @param callback
    */
-  onClickOutsideModalContent(callback: () => void) {
+  public onClickOutsideModalContent(callback: () => void) {
     const containerEl = this.wrapper.nativeElement;
 
     this.clickOutsideCallback = (event: MouseEvent) => {
@@ -83,13 +85,5 @@ export class NgxModalWrapperComponent implements OnDestroy {
     };
 
     containerEl.addEventListener('click', this.clickOutsideCallback, false);
-  }
-
-  ngOnDestroy() {
-    if (this.clickOutsideCallback) {
-      const containerEl = this.wrapper.nativeElement;
-      containerEl.removeEventListener('click', this.clickOutsideCallback, false);
-      this.clickOutsideCallback = null;
-    }
   }
 }

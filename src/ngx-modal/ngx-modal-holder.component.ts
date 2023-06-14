@@ -52,11 +52,7 @@ export class NgxModalHolderComponent {
    * @param {NgxModalOptionsOverrides?} options
    * @return {Observable<*>}
    */
-  addModal<T, T1>(
-    component: Type<NgxModalComponent<T, T1>>,
-    data?: T,
-    options?: NgxModalOptionsOverrides,
-  ): Observable<T1> {
+  public addModal<T, T1>(component: Type<NgxModalComponent<T, T1>>, data?: T, options?: NgxModalOptionsOverrides): Observable<T1> {
     // create component
     if (!this.viewContainer) {
       return of(null);
@@ -108,7 +104,7 @@ export class NgxModalHolderComponent {
    * @returns {Promise<void>}
    * @param closingModal
    */
-  async removeModal(closingModal: NgxModalComponent<any, any>): Promise<any> {
+  public async removeModal(closingModal: NgxModalComponent<any, any>): Promise<any> {
     const options = closingModal.options;
     this.toggleWrapperClass(closingModal.wrapper, options.wrapperClass);
     return this.wait(options.animationDuration).then(() => {
@@ -121,7 +117,7 @@ export class NgxModalHolderComponent {
   /**
    * Instructs all open modals to
    */
-  removeAllModals(): Promise<any> {
+  public removeAllModals(): Promise<any> {
     return Promise.all(this.modals.map(modal => this.removeModal(modal)));
   }
 

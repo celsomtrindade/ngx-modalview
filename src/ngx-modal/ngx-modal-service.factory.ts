@@ -1,5 +1,4 @@
 import { ApplicationRef, ComponentFactoryResolver, Injector } from '@angular/core';
-
 import { NgxModalService, NgxModalServiceConfig } from './ngx-modal.service';
 
 /**
@@ -10,9 +9,11 @@ import { NgxModalService, NgxModalServiceConfig } from './ngx-modal.service';
  * @param { NgxModalServiceConfig } options
  * @return { NgxModalService }
  */
-export function NgxModalServiceFactory(resolver: ComponentFactoryResolver,
-                                          applicationRef: ApplicationRef,
-                                          injector: Injector,
-                                          options: NgxModalServiceConfig) {
-    return new NgxModalService(resolver, applicationRef, injector, options);
+export function NgxModalServiceFactory(
+  resolver: ComponentFactoryResolver,
+  applicationRef: ApplicationRef,
+  injector: Injector,
+  options: NgxModalServiceConfig
+): NgxModalService {
+  return new NgxModalService(resolver, applicationRef, injector, options);
 }
