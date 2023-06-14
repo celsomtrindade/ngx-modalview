@@ -54,5 +54,12 @@
     "typescript": "^5.0.4",
     "zone.js": "^0.13.0"
   },
-  "release-it": {}
+  "release-it": {
+    "git": {
+      "commitMessage": "Release v${version}"
+    },
+    "github": {
+      "release": true
+    }
+  }
 }
