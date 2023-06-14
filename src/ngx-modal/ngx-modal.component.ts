@@ -1,12 +1,6 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { Observable, Observer, BehaviorSubject } from 'rxjs';
-
 import { NgxModalOptions } from './ngx-modal-options';
-
-export interface OnDestroyLike {
-  ngOnDestroy(): void;
-  [key: string]: any;
-}
 
 /**
  * Abstract modal
@@ -56,7 +50,7 @@ export abstract class NgxModalComponent<T, T1> {
   /**
    * Constructor
    */
-  constructor() {}
+  constructor() { }
 
   /**
    * Maps your object passed in the creation to fields in your own Dialog classes

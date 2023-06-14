@@ -1,15 +1,4 @@
-import {
-  Directive,
-  AfterViewInit,
-  OnDestroy,
-  Input,
-  Output,
-  ElementRef,
-  NgZone,
-  EventEmitter,
-  Renderer2,
-  OnChanges
-} from '@angular/core';
+import { Directive, AfterViewInit, OnDestroy, Input, Output, ElementRef, NgZone, EventEmitter, Renderer2, OnChanges } from '@angular/core';
 import { Subject, fromEvent } from 'rxjs';
 import { filter, switchMap, map, takeUntil } from 'rxjs/operators';
 
@@ -27,18 +16,14 @@ export interface DragOffset {
   selector: '[dialogDraggable]'
 })
 export class DraggableDirective implements AfterViewInit, OnChanges, OnDestroy {
-  @Input()
-  dragHandle?: string | Element;
-  @Input()
-  dragTarget: string | Element;
-  @Input()
-  dragEnabled = false;
-  @Input()
-  set dialogDragOffset(offset: DragOffset) {
+  @Input() dragHandle?: string | Element;
+  @Input() dragTarget: string | Element;
+  @Input() dragEnabled = false;
+  @Input() set dialogDragOffset(offset: DragOffset) {
     this.reset(offset);
   }
-  @Output()
-  dragged = new EventEmitter<DraggedEvent>();
+
+  @Output() dragged = new EventEmitter<DraggedEvent>();
 
   /** Element to be dragged */
   private target: HTMLElement;
@@ -49,7 +34,7 @@ export class DraggableDirective implements AfterViewInit, OnChanges, OnDestroy {
   private enabled = true;
   private destroy$ = new Subject<void>();
 
-  constructor(private host: ElementRef, private zone: NgZone, private renderer: Renderer2) {}
+  constructor(private host: ElementRef, private zone: NgZone, private renderer: Renderer2) { }
 
   public ngAfterViewInit(): void {
     if (!this.enabled) {
@@ -163,8 +148,8 @@ export class DraggableDirective implements AfterViewInit, OnChanges, OnDestroy {
       this.dragHandle instanceof Element
         ? this.dragHandle
         : typeof this.dragHandle === 'string' && this.dragHandle
-        ? document.querySelector(this.dragHandle as string)
-        : this.host.nativeElement;
+          ? document.querySelector(this.dragHandle as string)
+          : this.host.nativeElement;
 
     /** add the move cursor */
     if (this.handle && this.enabled) {

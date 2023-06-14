@@ -40,5 +40,5 @@ export class NgxModalView {
     };
   }
 
-  constructor() {}
+  constructor() { }
 }

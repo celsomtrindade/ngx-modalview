@@ -1,14 +1,5 @@
-import {
-  ApplicationRef,
-  ComponentFactoryResolver,
-  EmbeddedViewRef,
-  Injectable,
-  Injector,
-  Optional,
-  Type,
-} from '@angular/core';
+import { ApplicationRef, ComponentFactoryResolver, EmbeddedViewRef, Injectable, Injector, Optional, Type } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { NgxModalHolderComponent } from './ngx-modal-holder.component';
 import { NgxModalComponent } from './ngx-modal.component';
 import { NgxModalOptionsOverrides } from './ngx-modal-options';
